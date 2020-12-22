@@ -1,7 +1,7 @@
 ipython
 jupyter
 nltk
-torch==0.4.1
+torch
 torchtext
 boltons
 cached_property
