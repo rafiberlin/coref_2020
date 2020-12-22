@@ -323,7 +323,9 @@ def lookup_tensor(tokens, vectorizer):
     return to_cuda(torch.tensor([vectorizer.stoi(t) for t in tokens]))
 
 
-data_root = os.sep.join(["..", "data"])
+colab_root="/content/coref_2020"
+#colab_root=".."
+data_root = os.sep.join([colab_root, "data"])
 data_train = os.sep.join([data_root, "train"])
 data_test = os.sep.join([data_root, "test"])
 data_val = os.sep.join([data_root, "development"])
@@ -333,7 +335,8 @@ train_corpus = read_corpus(data_train)
 #test_corpus = read_corpus('../data/train/')
 val_corpus = read_corpus(data_val)
 test_corpus = read_corpus(data_test)
-vector_cache = "C:/Users/Rafi/Uni_Workspace/coreference-resolution/data/.vector_cache/"
+#vector_cache = "C:/Users/Rafi/Uni_Workspace/coreference-resolution/data/.vector_cache/"
+vector_cache = os.sep.join([colab_root, "data/.vector_cache/"])
 
 GLOVE = LazyVectors.from_corpus(train_corpus.vocab,
                                 name='glove.840B.300d.txt',
