@@ -465,6 +465,7 @@ class Trainer:
 
             # Evaluate every eval_interval epochs
             if epoch % eval_interval == 0:
+                self.save_model(str(datetime.now()))
                 print('\n\nEVALUATION\n\n')
                 self.model.eval()
                 results = self.evaluate(self.val_corpus)
@@ -691,5 +692,5 @@ class Trainer:
 # Initialize model, train
 model = CorefScore(embeds_dim=400, hidden_dim=200)
 # ?? train for 150 epochs, each each train 100 documents
-trainer = Trainer(model, train_corpus, val_corpus, test_corpus, steps=5)
+trainer = Trainer(model, train_corpus, val_corpus, test_corpus, steps=100)
 trainer.train(150)
